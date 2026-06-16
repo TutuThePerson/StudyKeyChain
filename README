@@ -114,3 +114,13 @@ Blocks:
  - D+ and D- lines shorted so it works both ways
  - Protection chip protects MCU from electrostatic discharge
  - 5.1k pulldown resistors (as required by USB C spec)
+
+Assembly:
+ - Make sure you have all components listed available and casing 3D printed.
+ - Solder all the components on the PCB as per the schematic
+ - Connect the battery to the 2 pin connector (label in schematic file)
+ - Place the PCB on top of the base and use M3 screws, preferably around 3-4mm
+ - Flash firmware onto the ESP32 using the USB-C connector (If there is no output when flashing, hold the flash button to reset - forces chip into download mode)
+ - Use plastic adhesive to adhere the the lid to the base - once everything works okay
+ - Put on the keycap and enjoy!
+
