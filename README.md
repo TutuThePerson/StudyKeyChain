@@ -4,11 +4,11 @@ A small-portable study companion that motivates you to study!!! (probably). Its 
 ## Why did I build this?
 
 No clue. jk. I just finished 2 months of A-levels and being grinding those past papers for atleast half a year now; I realise it is really demoralising to be studying 3 in the morning alone - so this idea stemmed from those experiences. It's just a bit of fun really and isn't aimed as a full replacement for regular discipline and proper revision but might provide that **little** push to keep studying while staying healthy. I didn't want a big, bulky solution so I thought it would be cool if I could fit it on a keychain, that I could hang on my bag as such.
-The StudyPal consists of a 2 layer PCB, larger than a regular keycap but still small enough to put in your pocket or hang on your bag. It runs an ESP32-S3, with audio functiionality (physically hidden under the keycap)
+The StudyPal consists of a 2 layer PCB, larger than a regular keycap but still small enough to put in your pocket or hang on your bag. It runs an ESP32-S3, with audio functionality (physically hidden under the keycap)
 
 ## Functions:
 
-1. It goes throgh focus sessions on variable length via the rotary encoder under the keycap.
+1. It goes through focus sessions on variable length via the rotary encoder under the keycap.
 2. It has audio playback through a speaker which aims to play motivational audio clips, session start-end cues and hydration reminders.
 3. OLED display which shows timer, session stats and break progress througha slim slanted window on the keycap.
 4. Keycap - short press for motivational cue, long press to end a session early or to power off
