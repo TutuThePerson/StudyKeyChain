@@ -1,17 +1,27 @@
-A discrete, motivational study timer keychain.
+A small-portable study companion that motivates you to study!!! (probably). Its purpose is to play voice clips (initially in my own voice lol, but you could ask your teacher's voice - Mr Tuton watchout :) ), it aims to run fixed focus session and reminds you to take a break and hyrdrate all in the formfactor of a keychain.
+
+Why did I build this?
+
+No clue.jk. I just finished 2 months of A-levels and being grinding those past papers for atleast half a year now; I realise it is really demoralising to be studying 3 in the morning alone - so this idea stemmed from those experiences. It's just a bit of fun really and isn't aimed as a full replacement for regular discipline and proper revision but might provide that little push to keep studying while staying healthy. I didn't want a big, bulky solution so I thought it would be cool if I could fit it on a keychain, that I could hang on my bag as such.
+The StudyPal consists of a 2 layer PCB, larger than a regular keycap but still small enough to put in your pocket or hang on your bag. It runs an ESP32-S3, with audio functiionality (physically hidden under the keycap)
 
 Functions:
 
-- When pressed, the keychain gives motivational messages to encourage you to stay focused
-- When held, the keychain will start a timer for your study session or break 
-- After a hour of study, the keychain will give you a reminder to take a break and drink some water
-- When held again, the keychain will end the current session and reset.
+1. It goes throgh focus sessions on variable length via the rotary encoder under the keycap.
+2. It has audio playback through a speaker which aims to play motivational audio clips, session start-end cues and hydration reminders.
+3. OLED display which shows timer, session stats and break progress througha slim slanted window on the keycap.
+4. Keycap - short press for motivational cue, long press to end a session early or to power off
+5. Hidden Rotary Encoder undeer the keycap to adjust session length
+6. Battery powered via a single-cell LiPo with USB C charging and ESD protection
+
+Schematic:
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 The keychain is designed to be small,rechargable and portable. Acting as a study companion of sorts. It has a keycap which can be pressed as well as
 a small screen to display a timer and messages. Has a speaker to announce messages and volume nob to adjust the sound level.
 
 Components:
-
+![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
 Display: 
 https://thepihut.com/products/0-96-oled-display-module-128x64?variant=42810024820931&country=GB&currency=GBP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=11673057096&gbraid=0AAAAADfQ4GFnqqNToS8p5asC_NSDni8WB&gclid=Cj0KCQjwornRBhCrARIsAON5exGcvCFGRJbs2rZYKfWSv5leMXklEiwZfUrHGDKcCYuu_vIVaE8o2x4aAtSMEALw_wcB
 0.96 Inch OLED Display Module 128x64
