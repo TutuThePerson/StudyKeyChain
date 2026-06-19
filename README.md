@@ -17,112 +17,59 @@ Functions:
 Schematic:
 ![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
 
-The keychain is designed to be small,rechargable and portable. Acting as a study companion of sorts. It has a keycap which can be pressed as well as
-a small screen to display a timer and messages. Has a speaker to announce messages and volume nob to adjust the sound level.
+The Technical Stuff:
+
+Power sub-system:
+ - USB-C in goes through TP4056 and manages LiPo charging at 1A (set by the 1200 ohm resistor). The charge status drives two LEDs where red = charging and green indicates fully charged/done. TPL5111 acts as a power switch by latching the AP2112k 3.3V LDO on when the user presses the Kalih  Choc Keycap, and cuts power when the firmware returns POWER_DONE.
+ - A potential divider with 2 100k Ohm Resistor connectios is used to feed half the battery voltage so it can be read to monitor charge levels.
+
+Microcontroller unit
+- ESP-32-S3-WROOM-1-N8, has 8 MB of flash, firmware and audio clips/message fit comfortably in the unit.
+- The Strapping pins should be handled as stated by the datasheet.
+   - GPIO0:10k pullup resistor and a flash button to GND
+   - GPIO45/46: 10k pull down resistors to each pin
+   - EN: 10k puullup with a 1 micro Farad Capacitor connected to ground in parallel.
+
+Audio:
+- Audio is generated digitally by the microcontroller, and is streamed via I^2S to the class D amplifier, which in turn drives a speaked mounted under the keycap. Sound fires through the gapes just under the keycap edge.
+- The amp's SD_MODE pin has a 100k ohm pullup to 3.3V, putting it in stereo mixed mono mode.
+
+Display: 
+- 0.96" OLED breakouut connected via I^2C, viewed from a slim window cut into the case, meaning the display is stationary so it shouldn't be easily damaged.
+- I^2C has 4.7k pullups to both SDA and SCL to 3.3V
+
+USB-C connector 
+- 16 pin USB 2.0 receptable, D+ pads are tied together so directions works both ways - same goes for D- pads. These connections are then connected to the ESP32-S3's native USB pins. ESD protection is on both lines.
+
+PCB
+- 2 layer
+- L1 : components + signal traces
+- L2 : ground pour and some signal traces
 
 Components:
-Display: 
-https://thepihut.com/products/0-96-oled-display-module-128x64?variant=42810024820931&country=GB&currency=GBP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=11673057096&gbraid=0AAAAADfQ4GFnqqNToS8p5asC_NSDni8WB&gclid=Cj0KCQjwornRBhCrARIsAON5exGcvCFGRJbs2rZYKfWSv5leMXklEiwZfUrHGDKcCYuu_vIVaE8o2x4aAtSMEALw_wcB
-0.96 Inch OLED Display Module 128x64
-Microcontroller: ESP32-S3-WROOM-1-N8
- - Needs on board storage, lower power consumption
-Audio amplifier:max98357a
-Speaker: 28mm 8 ohm 1watt 
-https://shop.pimoroni.com/products/mini-oval-speaker-8-ohm-1-watt?variant=31150555267155
-Buzzer: Piezo
-Mechanical Switch: Kalih Choc V1
-Rotary encoder: EC11 encoder switch with push button
-Battery:803040 LiPoi 3.7V 1000mAh
-Charging IC: TP4056 
-USB C connector: 16 pin USB C connector
-Status LED: just a led really
-LDO: AP2112K-3.3 a
-Power Switch: TPL5111 Soft latch 
+1. ESP32-S3-WROOM-N8 MCU
+2. TP4056 charging IC
+3. TPL5111 power timer
+4. AO3401 P-MOSFET
+5. AP2122K - 3.3 LDO
+6. MAX98357A audio amp
+7. USBLC6-2SC6 ESD
+8. USB-C connector 16-pin
+9. 0.96" SSD1306 OLED breakout
+10. 28mm 8ohmn 2W speaker
+11. 12mm piezo buzzer
+12. Kalih Choc V1 Brown
+13. EC11 Rotary Encoder
+14. LiPo 803040 - 1000mah
+15. Resistors (100k,10k,5.1k,4.7k,1.2k,1k - 0402)
+16. Capacitors ( 100n,10u,1u = 0402)
+17. LED (RED, GREEN - 0603)
+18. 6mm tactile button
+19. PCB
+20. M3 self-tapping screws
+21. 3D printed case + keycap
 
-SCHEMATIC EXPLANATION:
 
-Blocks:
-- Audio Amplifier: Amplifies the audio signal from the microcontroller to drive the speaker.
-- LDO Voltage Regulator: Provides stable 3.3V output to other components
-- OLED Display: Responsible for displaying the timer and motivational messages.
-- Rotary Encoder: Allows user to adjust volume
-- Testpoints: To test and debug the circuit (during development)
-- PWR Flag: Tells Kicad that the net is intentially powered
-- Battery voltage sensor: Monitors the battery voltage
-- Battery connector: Connects the battery to the PCB
-- Piezoelectric buzzer: Used to generate sound for alerts and notifications.
-- Speaker: Outputs audio messages and alerts
-- Flash/Reset Buttons: Used to reset the microcontroller or flash new firmware
-- Charging Circuit: Manages the charging of the battery through the USB C connector
-- Power Timer: Manages power state of the device 
-- Microcontroller Unit: Processing Unit of the device, manages firmware and provides native USB for flashing and debugging
-- USB Connector + Protection: Provides USB connectivity and protection for the microcontroller
-
-- Audio Amplifier:
- - VDD PIN is connected directly to 3.3V and in parallel to 2 decoupling capacitors (10uF and 0.1uF) to reduce noise with the power rail.
- - The 100k resistor connected to "SD_MODE" pulls up the voltage and sets the chip to stereo mode. 
- - I^2S signals connect directly the microcontroller
-
-- LDO Voltage Regulator:
- - Takes battery voltage and regulates it down to 3.3V for the microcontroller and other components.
- - 10uF capacitor stabilises the output voltage and reduces noise.
- - EN pin is tied to VBAT_SW meaning that no seperate enable control is needed as LDO is enabled whenever MOSFET delivers power
-
-- OLED Display:
- - I^2C signals connect directly to the microcontroller
- - 4.7k pullup resistors set the I^2C bus to a hgih state
- - Powered by 3.3V rail
-
-- Rotary Encoder:
- - Rotary Encoder with integrated push switch, A,B and C are rotary signals and SW is the push button signal.
- - 10k pullup resistors are used on A, B and SW maintains correct logic states when not being actuated, 100nf Caps supress contact noise
- - C is connected to ground so pressing the switch pulls signal lines to a LOW state
-
-- Testpoints:
- - Just testing points really. No special usecase (just used for testing)
-
-- PWR flag:
- - just a kicad symbol that tells electric rules that net has an intentional power source. No special usecase
-
-- Battery voltage sensor:
- - Potential divider with two 100k resistors halving the battery voltage so fits ESP32 input range
- - Firmware intends to read the reported voltage and multiplies by 2 to get the actual battery voltage
- - (High resistance values chosen to reduce current draw, extending battery life)
-
-- Battery connector:
- - Standard JST-PH 2 pin connector which matches most hobby LiPo batteries. 
-
-- Piezoelectric buzzer:
- - Directly driven by GPIO11 (ESP32 IO11 pin)
- - Used for short audible click noises
-
-- Speaker:
- - 8 Ohmn Speaker, low power draw.
- - just a speaker really.
-
-- Flash/Reset Buttons:
- - Safety net during development in case something goes wrong. ESP supports autoamtic flash entry over native USB
-
-- Charging Circuit:
- - TP4056 charger handles charging of the LiPo battery through the USB C connector.
- - 1.2k resistor sets the charging current to 1A, which is safe for the 1000mAh battery.
- - Red LED indicates charging, green LED indicates fully charged.
-
-- Power Timer:
- - Soft Latch timer keeps device on after a buttojn press release and turns it off when firware signals completion from the "DONE" pin
- - "DELAY" pin connected to +BATT to set manual mode
- - Mosfet allows circuit to fully disconnect LDO from battery power for zero-current standby
-
-- Microcontroller Unit:
- - 8MB flash varaint, used to hold firmware and voice clips etc
- - Has native USB for flashing and debugging
- - Strapping pins (GPIO0, GPIO45, GPIO46) tied to logic states set by pullup/down resistors.
-
-- USB Connector + Protection:
- - USB 2.0 (not super fast)
- - D+ and D- lines shorted so it works both ways
- - Protection chip protects MCU from electrostatic discharge
- - 5.1k pulldown resistors (as required by USB C spec)
 
 Assembly:
  - Make sure you have all components listed available and casing 3D printed.
@@ -132,4 +79,6 @@ Assembly:
  - Flash firmware onto the ESP32 using the USB-C connector (If there is no output when flashing, hold the flash button to reset - forces chip into download mode)
  - Use plastic adhesive to adhere the the lid to the base - once everything works okay
  - Put on the keycap and enjoy!
+
+Design Notes:
 
