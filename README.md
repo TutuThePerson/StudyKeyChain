@@ -15,11 +15,16 @@ Functions:
 6. Battery powered via a single-cell LiPo with USB C charging and ESD protection
 
 Schematic:
+
 ![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
+
 PCB:
+
 ![PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162050.png)
 ![3D PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162218.png)
+
 CASE:
+
 ![Assembled](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162341.png)
 ![Exploded](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162646.png)
 
@@ -110,6 +115,7 @@ BOM:
 |30.|3D printed Case and Keycap|1 set|N/A (small)|£10.50 (1 Roll PETG HF)|https://uk.store.bambulab.com/products/petg-hf?id=42010450264124|
 |31.|Thin Wire|1|~£0.5 (1m)|£4.99 (spool of 10m)|https://www.amazon.co.uk/sourcing-map-Stranded-Electrical-Connecting/dp/B0F6LRFJS6/ref=asc_df_B0F6LRFJS6?mcid=b5412eaed2b73ada95f26adff5a23573&tag=googshopuk-21&linkCode=df0&hvadid=744245591477&hvpos=&hvnetw=g&hvrand=16339553975944344858&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9045986&hvtargid=pla-2428586534065&hvocijid=16339553975944344858-B0F6LRFJS6-&hvexpln=0&gad_source=1&th=1|
 |32.|Keychain|1|£0.13|£3.89 (pack of 30)|https://www.amazon.co.uk/YHYZ-Premium-Keychain-Suitable-Jewelry/dp/B08CMWFL8Y/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.fGkRdlsqd3AZ_iNoiR7zF35eZUd6fHiOCn_RnzR7vG0Dsa545q4wWuqMcmIT-IYOeXM9MwDFgkXlyeWz8jMrcc_tMue2nDkNHKqY9WsoGyH_8GPG7TQi2M0S8wCalJpa3Sym7tYFwX-vqYpmQUAKadWCtYKhZ1TgqDam371x7FiJaGl2wRj_T-UYzSTtC1hAXJ3cIsjkdFY4oScrln7F-ZkC-0hp9vfMWK_BnJqm5k8kiewMKxIDF1-szprBlbU6V8cEVpE91mFfO-X3o2D1GVEmsEcWy1zfVsUAdCABfNY.WjOZfGPOmoFyCkeD3UFRfQtdPHeSlY8Nv6DINSG97Os&dib_tag=se&keywords=Keyrings%2B%26%2BKeychains&qid=1781890914&sr=8-1-spons&aref=CwgZzk9sIl&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1|
+-
 Assembly:
  - Make sure you have all components listed available and casing 3D printed.
  - Solder all the components on the PCB as per the schematic
@@ -123,4 +129,3 @@ Design Notes:
 - You could go with a different mcu but I chose the ESP-32 as this one has native USB, decent peripheral support and has 8MB of memory which makes it a suitable cost-effective solution in this case. The atenna is not used, but it could be used in future alterations with firmware but if you really wanted bluetooth or wifi you can use ur phone lol
 - I reccomend you get a stencil which would make soldering alot easier
 - The system switches and the rotary encoder is located under the keycap as they are designed to be set-once parameters, not designed to be constantly adjusted so this would make the keycap look better.
-
