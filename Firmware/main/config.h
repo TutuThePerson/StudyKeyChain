@@ -44,7 +44,7 @@
 #define HYDRATION_REMINDER_SECONDS 3300
 
 // Battery Monitoring
-#define POTENTIAL_DIVIDER_RATIO 2f 
+#define POTENTIAL_DIVIDER_RATIO 2.0f 
 #define FULL_BATT_mV 4200
 #define BATT_EMPTY_mV 3000
 #define BATT_LOW_mV 3300

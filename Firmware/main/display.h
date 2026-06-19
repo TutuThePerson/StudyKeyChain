@@ -1,6 +1,6 @@
 #pragma once
 
-void distance_init(void);
+void display_init(void);
 void display_refresh(void);
 void display_show_idle(int sessions_today);
 void display_show_session_length(int seconds);

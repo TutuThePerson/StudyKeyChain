@@ -10,6 +10,6 @@ typedef enum {
     CLIP_POWER_OFF
 } audio_clip_t;
 
-void audioinit(void);
+void audio_init(void);
 void audio_play_clip(audio_clip_t clip);
 void audio_play_tone(int frequency_hz, int duration_ms);

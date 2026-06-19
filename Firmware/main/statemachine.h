@@ -17,5 +17,5 @@ void state_machine_transition_to(chain_state_t new_state);
 // Peripheral inputs
 void state_machine_on_button_short_press(void);
 void state_machine_on_button_long_press(void);
-void state_machine_on_button_rotary_encoder_rotate(void);
+void state_machine_on_encoder_rotation(int direction);
 void state_machine_on_button_encoder_press(void);

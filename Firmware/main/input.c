@@ -20,13 +20,13 @@ void input_init(void){
     gpio_set_direction(PIN_BUTTON, GPIO_MODE_INPUT);
     gpio_set_pull_mode(PIN_BUTTON, GPIO_PULLUP_ONLY);
 
-    gpio_set_directon(PIN_ENCODER_A, GPIO_MODE_INPUT);
+    gpio_set_direction(PIN_ENCODER_A, GPIO_MODE_INPUT);
     gpio_set_pull_mode(PIN_ENCODER_A, GPIO_PULLUP_ONLY);
     gpio_set_direction(PIN_ENCODER_B, GPIO_MODE_INPUT);
     gpio_set_pull_mode(PIN_ENCODER_B, GPIO_PULLUP_ONLY);
     gpio_set_direction(PIN_ENCODER_SW, GPIO_MODE_INPUT);
     gpio_set_pull_mode(PIN_ENCODER_SW, GPIO_PULLUP_ONLY);
-    ESP_LOGI(TAG, " Input Initialised")
+    ESP_LOGI(TAG, " Input Initialised");
 
 }
 
@@ -41,7 +41,7 @@ void input_check(void) {
         if (hold_duration > LONG_PRESS_mS){
             state_machine_on_button_long_press();
         }
-        else if (hold_Duration > DEBOUNCE_MS) {
+        else if (hold_duration > DEBOUNCE_mS) {
             state_machine_on_button_short_press();
         }
     }
@@ -54,10 +54,10 @@ void input_check(void) {
 
     if (a != last_encoder_a) {
      if (a== false && b == true) {
-        state_machine_on_encoder_rotate(1);
+        state_machine_on_encoder_rotation(1);
     }
     else if ( a == false && b == false) {
-        state_machine_on_button_rotary_encoder_rotate(-1);
+        state_machine_on_encoder_rotation(-1);
     }
 }
 last_encoder_a = a;
@@ -65,7 +65,7 @@ last_encoder_a = a;
 
 bool sw = (gpio_get_level(PIN_ENCODER_SW)==0);
 if (sw && !last_encoder_sw) {
-    state_machine_on_encoder_press();
+    state_machine_on_button_encoder_press();
 }
 last_encoder_sw = sw;
 }

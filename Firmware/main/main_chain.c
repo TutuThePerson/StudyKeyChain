@@ -9,7 +9,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-static const char *TAG = "MAIN"
+static const char *TAG = "MAIN";
 
 void app_main(void) {
     ESP_LOGI(TAG, "Starrrrrrrrrrting");

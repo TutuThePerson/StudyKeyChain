@@ -44,7 +44,7 @@ int power_get_battery_mv(void){
         adc_oneshot_read(adc_handle, ADC_CHANNEL_2, &raw);
         raw_sum += raw;
     }
-    int raw_avg = raw_sum / samples
+    int raw_avg = raw_sum / samples;
     int voltage_mv = 0;
     adc_cali_raw_to_voltage(cali_handle, raw_avg, &voltage_mv);
     return (int)(voltage_mv * POTENTIAL_DIVIDER_RATIO);
@@ -59,7 +59,7 @@ void power_check(void) {
         display_show_low_battery();
         low_battery_warned = true;
     }
-    if batt_mv < BATT_EMPTY_mV {
+    if (batt_mv < BATT_EMPTY_mV) {
         ESP_LOGE(TAG, "Critical Power State, shuttng yo down");
         power_shutdown();
     }
@@ -72,6 +72,6 @@ void power_shutdown(void) {
     display_refresh();
     gpio_set_level(PIN_POWER_DONE,1);
     while(1) {
-        vTaskDelay (1000, portTICK_PERIOD_mS);
+        vTaskDelay (1000/portTICK_PERIOD_MS);
     }
 }

@@ -18,9 +18,9 @@ void audio_init(void) {
     i2s_new_channel(&chan_cfg, &tx_handle, NULL);
     i2s_std_config_t std_cfg = {
         .clk_cfg = I2S_STD_CLK_DEFAULT_CONFIG(I2S_SAMPLE_RATE),
-        .slot_cfg = I2S_STD_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_16BIT,I2S_SLOT_MODE_MONO),
+        .slot_cfg = I2S_STD_PHILIPS_SLOT_DEFAULT_CONFIG(I2S_DATA_BIT_WIDTH_16BIT,I2S_SLOT_MODE_MONO),
         .gpio_cfg = {
-            .mclk = I2s_GPIO_UNUSED,
+            .mclk = I2S_GPIO_UNUSED,
             .bclk = PIN_I2S_BCLK,
             .ws = PIN_I2S_LRCLK,
             .dout = PIN_I2S_DIN,
@@ -46,9 +46,10 @@ void audio_play_tone(int frequency_hz, int duration_ms) {
         ESP_LOGE(TAG, "Failed to allocate sample buffer");
         return;
     }
-    for int i = 0; i < total_samples; i++ {
-        float t = (float(i))/I2S_SAMPLE_RATE;
-        samples[1] = (int16_t)(16000.0f * sinf(2.0f * 3.14159f *(float)frequency_hz * t));
+
+    for (int i = 0;i < total_samples; i++) {
+        float t = (float)i/I2S_SAMPLE_RATE;
+        samples[i] = (int16_t)(16000.0f * sinf(2.0f * 3.14159f *(float)frequency_hz * t));
     }
     size_t written;
     i2s_channel_write(tx_handle, samples, total_samples * sizeof(int16_t), &written, 1000 / portTICK_PERIOD_MS);

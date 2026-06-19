@@ -10,13 +10,13 @@
 static const char *TAG = "STATE";
 static chain_state_t current_state = STATE_IDLE;
 static int session_duration_seconds = SESSION_DEFAULT_SECONDS;
-static int session_elasped_seconds = 0;
+static int session_elapsed_seconds = 0;
 static int break_elapsed_seconds = 0;
 
 static int sessions_today = 0;
 
 void state_machine_init(void){
-    current_state == STATE_IDLE;
+    current_state = STATE_IDLE;
     ESP_LOGI(TAG, "State machine initialised");
 }
 chain_state_t state_machine_get_current(void) {
@@ -36,7 +36,7 @@ void state_machine_transition_to(chain_state_t new_state){
          break;
         case STATE_RUNNING:
          session_elapsed_seconds = 0;
-         audio_play_clip(clip_session_start);
+         audio_play_clip(CLIP_SESSION_START);
          display_show_timer(session_duration_seconds);
          break;
         case STATE_BREAK:
@@ -46,7 +46,7 @@ void state_machine_transition_to(chain_state_t new_state){
          break;
         case STATE_ENDED:
          sessions_today++;
-         audio_play_clip(CLIP_SESSION_ENDED);
+         audio_play_clip(CLIP_SESSION_END);
          display_show_session_complete(sessions_today);
          break;
         case STATE_HYDRATION_REMINDER:
@@ -66,17 +66,17 @@ void state_machine_tick(void) {
     case STATE_RUNNING:
      session_elapsed_seconds++;
      display_show_timer(session_duration_seconds - session_elapsed_seconds);
-     if session_elapsed_seconds == HYDRATION_REMINDER_SECONDS{
+     if (session_elapsed_seconds == HYDRATION_REMINDER_SECONDS){
         state_machine_transition_to(STATE_HYDRATION_REMINDER);
      }
-     if session_elapsed_seconds >= session_duration_seconds {
+     if (session_elapsed_seconds >= session_duration_seconds) {
         state_machine_transition_to(STATE_BREAK);
      }
      break;
     case STATE_BREAK:
-     break_elapsed_sec++;
+     break_elapsed_seconds++;
      display_show_break(BREAK_DURATION_SECONDS-break_elapsed_seconds);
-     if ( break_elapsed_sec >= BREAK_DURATION_SECONDS) {
+     if ( break_elapsed_seconds >= BREAK_DURATION_SECONDS) {
         state_machine_transition_to(STATE_ENDED);
      }
      break;
@@ -84,7 +84,7 @@ void state_machine_tick(void) {
      break;
     case STATE_HYDRATION_REMINDER:
      session_elapsed_seconds++;
-     if (session_elapsed_seconds = HYDRATION_REMINDER_SECONDS >= 3) {
+     if (session_elapsed_seconds - HYDRATION_REMINDER_SECONDS >= 3) {
         state_machine_transition_to(STATE_RUNNING);
      }
      break;
@@ -94,13 +94,13 @@ void state_machine_tick(void) {
 void state_machine_on_button_short_press(void) {
     switch (current_state) {
         case STATE_IDLE:
-            audio_play_clip(CLIP_MOTIVATIONAL_RANDOM):
+            audio_play_clip(CLIP_MOTIVATIONAL_RANDOM);
             break;
         case STATE_CONFIGURING:
          state_machine_transition_to(STATE_RUNNING);
          break;
         case STATE_RUNNING:
-         audio_play_clip(CLIP_MOTIVATIONAL_RANDOM)
+         audio_play_clip(CLIP_MOTIVATIONAL_RANDOM);
          break;
         case STATE_BREAK:
          state_machine_transition_to(STATE_CONFIGURING);
@@ -115,32 +115,32 @@ void state_machine_on_button_short_press(void) {
 }
 
 void state_machine_on_button_long_press(void) {
-    if current_state == STATE_RUNNING || current_state == STATE_BREAK {
+    if ((current_state == STATE_RUNNING) || (current_state == STATE_BREAK)) {
         state_machine_transition_to(STATE_ENDED);
     }
     else{
         ESP_LOGI(TAG, "Long press = power off");
         power_shutdown();
     }
+}
 void state_machine_on_encoder_rotation(int direction) {
-    if current_state == STATE_CONFIGURING {
+    if (current_state == STATE_CONFIGURING) {
         if (direction>0) {
-            session_duration_seconds =+ SESSION_STEP_SEC;
+            session_duration_seconds += 300;
         }
         else{
-            session_duration_seconds =- SESSION_STEP_SEC;
+            session_duration_seconds -= 300;
         }
 
-        if (session_duration_seconds < SESSION_MIN_SEC) session_duration_seconds = SESSION_MIN_SEC;
-        if (session_duration_seconds > SESSION_MAX_SEC) session_duration_seconds = SESSON_MAX_SEC;
+        if (session_duration_seconds < 600) session_duration_seconds = 600;
+        if (session_duration_seconds > 5400) session_duration_seconds = 5400;
         display_show_session_length(session_duration_seconds);
     }
 }
-void state_machine_on_encoder_press(void){
- if current_state == STATE_CONFIGURING {
+void state_machine_on_button_encoder_press(void){
+ if (current_state == STATE_CONFIGURING) {
     state_machine_transition_to(STATE_RUNNING);
- } else if current_state == STATE_IDLE {
+ } else if (current_state == STATE_IDLE) {
     state_machine_transition_to(STATE_CONFIGURING);
  }
-}
 }
