@@ -15,13 +15,12 @@ Functions:
 6. Battery powered via a single-cell LiPo with USB C charging and ESD protection
 
 Schematic:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
 
 The keychain is designed to be small,rechargable and portable. Acting as a study companion of sorts. It has a keycap which can be pressed as well as
 a small screen to display a timer and messages. Has a speaker to announce messages and volume nob to adjust the sound level.
 
 Components:
-![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
 Display: 
 https://thepihut.com/products/0-96-oled-display-module-128x64?variant=42810024820931&country=GB&currency=GBP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=11673057096&gbraid=0AAAAADfQ4GFnqqNToS8p5asC_NSDni8WB&gclid=Cj0KCQjwornRBhCrARIsAON5exGcvCFGRJbs2rZYKfWSv5leMXklEiwZfUrHGDKcCYuu_vIVaE8o2x4aAtSMEALw_wcB
 0.96 Inch OLED Display Module 128x64
