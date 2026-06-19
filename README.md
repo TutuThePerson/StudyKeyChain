@@ -1,11 +1,12 @@
+# Study Pal
 A small-portable study companion that motivates you to study!!! (probably). Its purpose is to play voice clips (initially in my own voice lol, but you could ask your teacher's voice), it aims to run fixed focus session and reminds you to take a break and hyrdrate all in the formfactor of a keychain.
 
-Why did I build this?
+## Why did I build this?
 
-No clue.jk. I just finished 2 months of A-levels and being grinding those past papers for atleast half a year now; I realise it is really demoralising to be studying 3 in the morning alone - so this idea stemmed from those experiences. It's just a bit of fun really and isn't aimed as a full replacement for regular discipline and proper revision but might provide that little push to keep studying while staying healthy. I didn't want a big, bulky solution so I thought it would be cool if I could fit it on a keychain, that I could hang on my bag as such.
+No clue. jk. I just finished 2 months of A-levels and being grinding those past papers for atleast half a year now; I realise it is really demoralising to be studying 3 in the morning alone - so this idea stemmed from those experiences. It's just a bit of fun really and isn't aimed as a full replacement for regular discipline and proper revision but might provide that **little** push to keep studying while staying healthy. I didn't want a big, bulky solution so I thought it would be cool if I could fit it on a keychain, that I could hang on my bag as such.
 The StudyPal consists of a 2 layer PCB, larger than a regular keycap but still small enough to put in your pocket or hang on your bag. It runs an ESP32-S3, with audio functiionality (physically hidden under the keycap)
 
-Functions:
+## Functions:
 
 1. It goes throgh focus sessions on variable length via the rotary encoder under the keycap.
 2. It has audio playback through a speaker which aims to play motivational audio clips, session start-end cues and hydration reminders.
@@ -14,54 +15,54 @@ Functions:
 5. Hidden Rotary Encoder undeer the keycap to adjust session length
 6. Battery powered via a single-cell LiPo with USB C charging and ESD protection
 
-Schematic:
+### Schematic:
 
-![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
+![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png "Schematic")
 
-PCB:
+### PCB:
 
-![PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162050.png)
-![3D PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162218.png)
+![PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162050.png "PCB")
+![3D PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162218.png "3D RENDER PCB")
 
-CASE:
+### CASE:
 
 ![Assembled](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162341.png)
 ![Exploded](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162646.png)
 
-ZINE:
+### ZINE:
 
 ![Zine](https://github.com/TutuThePerson/StudyKeyChain/blob/main/docs/zine.png)
 
-The Technical Stuff:
+## The Technical Stuff:
 
-Power sub-system:
+### Power sub-system:
  - USB-C in goes through TP4056 and manages LiPo charging at 1A (set by the 1200 ohm resistor). The charge status drives two LEDs where red = charging and green indicates fully charged/done. TPL5111 acts as a power switch by latching the AP2112k 3.3V LDO on when the user presses the Kalih  Choc Keycap, and cuts power when the firmware returns POWER_DONE.
  - A potential divider with 2 100k Ohm Resistor connectios is used to feed half the battery voltage so it can be read to monitor charge levels.
 
-Microcontroller unit
+### Microcontroller unit
 - ESP-32-S3-WROOM-1-N8, has 8 MB of flash, firmware and audio clips/message fit comfortably in the unit.
 - The Strapping pins should be handled as stated by the datasheet.
    - GPIO0:10k pullup resistor and a flash button to GND
    - GPIO45/46: 10k pull down resistors to each pin
    - EN: 10k puullup with a 1 micro Farad Capacitor connected to ground in parallel.
 
-Audio:
+### Audio:
 - Audio is generated digitally by the microcontroller, and is streamed via I^2S to the class D amplifier, which in turn drives a speaked mounted under the keycap. Sound fires through the gapes just under the keycap edge.
 - The amp's SD_MODE pin has a 100k ohm pullup to 3.3V, putting it in stereo mixed mono mode.
 
-Display: 
+### Display: 
 - 0.96" OLED breakouut connected via I^2C, viewed from a slim window cut into the case, meaning the display is stationary so it shouldn't be easily damaged.
 - I^2C has 4.7k pullups to both SDA and SCL to 3.3V
 
-USB-C connector 
+### USB-C connector 
 - 16 pin USB 2.0 receptable, D+ pads are tied together so directions works both ways - same goes for D- pads. These connections are then connected to the ESP32-S3's native USB pins. ESD protection is on both lines.
 
-PCB
+### PCB
 - 2 layer
 - L1 : components + signal traces
 - L2 : ground pour and some signal traces
 
-Components:
+### Components:
 1. ESP32-S3-WROOM-N8 MCU
 2. TP4056 charging IC
 3. TPL5111 power timer
@@ -84,7 +85,7 @@ Components:
 20. M3 self-tapping screws
 21. 3D printed case + keycap
 
-BOM:
+### BOM:
 |No.|ITEM NAME|QUANTITY|UNIT PRICE|TOTAL PRICE|URL|
 |-|-|-|-|-|-|
 |1.|ESP32-S3-WROOM-1-N8|1|£4.21|£4.21|https://www.digikey.co.uk/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N8/15200089?gclsrc=aw.ds&gad_source=4&gad_campaignid=22158564224&gbraid=0AAAAADrbLlhnVw0uKBiLMdcB-sG65GBBf&gclid=CjwKCAjw0dPRBhAPEiwAE5vTTvIKuJ_ReG31ucZ_hla2_acCpvPbZDzBjPJQ6XUUpp84uHwSiiuX0xoCwkcQAvD_BwE|
@@ -120,7 +121,7 @@ BOM:
 |31.|Thin Wire|1|~£0.5 (1m)|£4.99 (spool of 10m)|https://www.amazon.co.uk/sourcing-map-Stranded-Electrical-Connecting/dp/B0F6LRFJS6/ref=asc_df_B0F6LRFJS6?mcid=b5412eaed2b73ada95f26adff5a23573&tag=googshopuk-21&linkCode=df0&hvadid=744245591477&hvpos=&hvnetw=g&hvrand=16339553975944344858&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9045986&hvtargid=pla-2428586534065&hvocijid=16339553975944344858-B0F6LRFJS6-&hvexpln=0&gad_source=1&th=1|
 |32.|Keychain|1|£0.13|£3.89 (pack of 30)|https://www.amazon.co.uk/YHYZ-Premium-Keychain-Suitable-Jewelry/dp/B08CMWFL8Y/ref=sr_1_1_sspa?dib=eyJ2IjoiMSJ9.fGkRdlsqd3AZ_iNoiR7zF35eZUd6fHiOCn_RnzR7vG0Dsa545q4wWuqMcmIT-IYOeXM9MwDFgkXlyeWz8jMrcc_tMue2nDkNHKqY9WsoGyH_8GPG7TQi2M0S8wCalJpa3Sym7tYFwX-vqYpmQUAKadWCtYKhZ1TgqDam371x7FiJaGl2wRj_T-UYzSTtC1hAXJ3cIsjkdFY4oScrln7F-ZkC-0hp9vfMWK_BnJqm5k8kiewMKxIDF1-szprBlbU6V8cEVpE91mFfO-X3o2D1GVEmsEcWy1zfVsUAdCABfNY.WjOZfGPOmoFyCkeD3UFRfQtdPHeSlY8Nv6DINSG97Os&dib_tag=se&keywords=Keyrings%2B%26%2BKeychains&qid=1781890914&sr=8-1-spons&aref=CwgZzk9sIl&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&psc=1|
 -
-Assembly:
+### Assembly:
  - Make sure you have all components listed available and casing 3D printed.
  - Solder all the components on the PCB as per the schematic
  - Connect the battery to the 2 pin connector (label in schematic file)
@@ -129,7 +130,7 @@ Assembly:
  - Use plastic adhesive to adhere the the lid to the base - once everything works okay
  - Put on the keycap and enjoy!
 
-Design Notes:
+### Design Notes:
 - You could go with a different mcu but I chose the ESP-32 as this one has native USB, decent peripheral support and has 8MB of memory which makes it a suitable cost-effective solution in this case. The atenna is not used, but it could be used in future alterations with firmware but if you really wanted bluetooth or wifi you can use ur phone lol
 - I reccomend you get a stencil which would make soldering alot easier
 - The system switches and the rotary encoder is located under the keycap as they are designed to be set-once parameters, not designed to be constantly adjusted so this would make the keycap look better.
