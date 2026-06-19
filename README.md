@@ -104,8 +104,8 @@ BOM:
 |24.| LED RED|1|£0.34|£0.34|https://www.digikey.co.uk/en/products/detail/lumex-opto-components-inc/SML-LXFM0603SIC-TR/411897|
 |25.| LED GREEN|1|£0.25|£0.25|https://www.digikey.co.uk/en/products/detail/w%C3%BCrth-elektronik/150060GS73220/8557160|
 |26.| 6mm Tactile Button|2|£0.87|£1.74|https://www.digikey.co.uk/en/products/detail/omron-electronics-inc-emc-div/B3U-1100P/1534339?gclsrc=aw.ds&gad_source=4&gad_campaignid=21679743037&gbraid=0AAAAADrbLliVdtEPbUuy9LFELut7DHDTH&gclid=CjwKCAjw0dPRBhAPEiwAE5vTTvYnbM4oHlGRfQNn_dntS3duTGOIw8Mnn3E9ZYJ9iPymQCv81zZk4RoCT6MQAvD_BwE|
-|27.|PCB|1|£|£|somewhere|
-|28.|Solder Paste Stencil|1|£|£|somewhere|
+|27.|PCB|1|£0.48|£2.4|JLCPCB|
+|28.|Solder Paste Stencil|1|£5.37|£5.37|JLCPCB|
 |29.|M3 Self Tapping Screws|4|£0.05|£2.47(50pack)|https://cpc.farnell.com/unbranded/m3x6-pan-pozi-stainl/m3x6-pan-pozi-stainless-screws/dp/FN00814?gross_price=true&mckv=sshopping_dc|pcrid|426684131423|kword||match||plid||slid||product|FN00814|pgrid|100371162718|ptaid|pla-2177230439981|&CMP=KNC-GUK-CPC-SHOPPING-9262013734-100371162718-FN00814&s_kwcid=AL!5616!3!426684131423!!!network}!2177230439981!&gad_source=1&gad_campaignid=9262013734&gbraid=0AAAAAD_m6B18mbvSishqdH_AlczsMH5Ge&gclid=CjwKCAjw0dPRBhAPEiwAE5vTToLz2cqZ-4VV0NWd0TadiM0KJ0ZQb9aNZPIKNwyf5dgqHOcgOcoShBoCqskQAvD_BwE
 |30.|3D printed Case and Keycap|1 set|N/A (small)|£10.50 (1 Roll PETG HF)|https://uk.store.bambulab.com/products/petg-hf?id=42010450264124|
 |31.|Thin Wire|1|~£0.5 (1m)|£4.99 (spool of 10m)|https://www.amazon.co.uk/sourcing-map-Stranded-Electrical-Connecting/dp/B0F6LRFJS6/ref=asc_df_B0F6LRFJS6?mcid=b5412eaed2b73ada95f26adff5a23573&tag=googshopuk-21&linkCode=df0&hvadid=744245591477&hvpos=&hvnetw=g&hvrand=16339553975944344858&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9045986&hvtargid=pla-2428586534065&hvocijid=16339553975944344858-B0F6LRFJS6-&hvexpln=0&gad_source=1&th=1|
