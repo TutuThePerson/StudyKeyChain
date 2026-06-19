@@ -30,7 +30,7 @@ CASE:
 
 ZINE:
 
-![Zine](https://github.com/TutuThePerson/StudyKeyChain/blob/main/docs/zine.pdf)
+![Zine](https://github.com/TutuThePerson/StudyKeyChain/blob/main/docs/zine.png)
 
 The Technical Stuff:
 
