@@ -1,6 +1,13 @@
 #pragma once
 
-typedef enum{STATE_IDLE,STATE_CONFIGURING,STATE_RUNNING,STATE_BREAK,STATE_ENDED,STATE_HYDRATION_REMINDER}chain_state_t;
+typedef enum{
+    STATE_IDLE,
+    STATE_CONFIGURING,
+    STATE_RUNNING,
+    STATE_BREAK,
+    STATE_ENDED,
+    STATE_HYDRATION_REMINDER
+}chain_state_t;
 
 void state_machine_init(void);
 void state_machine_tick(void);

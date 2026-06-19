@@ -2,6 +2,10 @@
 #include "config.h"
 #include "driver/i2s_std.h"
 #include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <math.h>
+#include <stdlib.h>
 
 static const char *TAG = "AUDIO";
 
@@ -43,10 +47,10 @@ void audio_play_tone(int frequency_hz, int duration_ms) {
         return;
     }
     for int i = 0; i < total_samples; i++ {
-        float t = (float(i))/I2S_SAMPLE_RATE:
-        samples[1] = (int16_t)(16000.0f * sinf(2.0f * 3.14159f * frequency_hz * t));
+        float t = (float(i))/I2S_SAMPLE_RATE;
+        samples[1] = (int16_t)(16000.0f * sinf(2.0f * 3.14159f *(float)frequency_hz * t));
     }
     size_t written;
-    i2s_channel_write(tx_handle, samples, total_samples * sizeof(int16_t), &written, 1000 / portTICK_PERIOD_mS);
+    i2s_channel_write(tx_handle, samples, total_samples * sizeof(int16_t), &written, 1000 / portTICK_PERIOD_MS);
     free(samples);
 }
