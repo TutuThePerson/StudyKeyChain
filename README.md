@@ -76,6 +76,9 @@ Components:
 21. 3D printed case + keycap
 
 BOM:
+|No.|ITEM NAME|QUANTITY|UNIT PRICE|TOTAL PRICE|URL|
+|-|-|-|-|-|-|
+|1.|
 
 Assembly:
  - Make sure you have all components listed available and casing 3D printed.
