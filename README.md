@@ -1,4 +1,4 @@
-A small-portable study companion that motivates you to study!!! (probably). Its purpose is to play voice clips (initially in my own voice lol, but you could ask your teacher's voice - Mr Tuton watchout :) ), it aims to run fixed focus session and reminds you to take a break and hyrdrate all in the formfactor of a keychain.
+A small-portable study companion that motivates you to study!!! (probably). Its purpose is to play voice clips (initially in my own voice lol, but you could ask your teacher's voice), it aims to run fixed focus session and reminds you to take a break and hyrdrate all in the formfactor of a keychain.
 
 Why did I build this?
 
@@ -16,6 +16,12 @@ Functions:
 
 Schematic:
 ![Schematic](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20131959.png)
+PCB:
+![PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162050.png)
+![3D PCB kicad](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162218.png)
+CASE:
+![Assembled](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162341.png)
+![Exploded](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162646.png)
 
 The Technical Stuff:
 
@@ -55,7 +61,7 @@ Components:
 6. MAX98357A audio amp
 7. USBLC6-2SC6 ESD
 8. USB-C connector 16-pin
-9. 0.96" SSD1306 OLED breakout
+9. 0.91" 128x32 SSD1306 OLED breakout
 10. 28mm 8ohmn 2W speaker
 11. 12mm piezo buzzer
 12. Kalih Choc V1 Brown
@@ -69,7 +75,7 @@ Components:
 20. M3 self-tapping screws
 21. 3D printed case + keycap
 
-
+BOM:
 
 Assembly:
  - Make sure you have all components listed available and casing 3D printed.
@@ -81,4 +87,7 @@ Assembly:
  - Put on the keycap and enjoy!
 
 Design Notes:
+- You could go with a different mcu but I chose the ESP-32 as this one has native USB, decent peripheral support and has 8MB of memory which makes it a suitable cost-effective solution in this case. The atenna is not used, but it could be used in future alterations with firmware but if you really wanted bluetooth or wifi you can use ur phone lol
+- I reccomend you get a stencil which would make soldering alot easier
+- The system switches and the rotary encoder is located under the keycap as they are designed to be set-once parameters, not designed to be constantly adjusted so this would make the keycap look better.
 
