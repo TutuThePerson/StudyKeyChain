@@ -28,6 +28,10 @@ CASE:
 ![Assembled](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162341.png)
 ![Exploded](https://github.com/TutuThePerson/StudyKeyChain/blob/main/assets/Screenshot%202026-06-19%20162646.png)
 
+ZINE:
+
+![Zine](https://github.com/TutuThePerson/StudyKeyChain/blob/main/docs/zine.png)
+
 The Technical Stuff:
 
 Power sub-system:
