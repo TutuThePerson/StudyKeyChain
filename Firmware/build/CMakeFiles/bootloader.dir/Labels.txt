@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/CMakeFiles/bootloader
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/CMakeFiles/bootloader.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/CMakeFiles/bootloader-complete.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+Z:/Github/Rerpo/StudyKeyChain/Firmware/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

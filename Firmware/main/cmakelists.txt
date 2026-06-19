@@ -1,0 +1,11 @@
+idf_component_register(
+    SRCS
+        "main_chain.c"
+        "audio.c"
+        "display.c"
+        "input.c"
+        "power.c"
+        "statemachine.c"
+    INCLUDE_DIRS "."
+    PRIV_REQUIRES log
+)
